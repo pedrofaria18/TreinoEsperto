@@ -17,5 +17,6 @@ public class MenuPrincipal {
         } else {
             System.out.println("Funcionalidade escolhida não existe");
         }
+        ler.close();
     }
 }
