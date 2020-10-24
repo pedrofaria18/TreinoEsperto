@@ -1,0 +1,5 @@
+Pedro Faria;98745612398;21/09/2001;Masculino;70;1.70
+Octavio;12365498778;17/09/2002;Masculino;80;1.75
+João;78945612303;05/03/1999;Masculino;80;1.80
+Pedro Damasceno;32145678978;05/06/2001;Masculino;70;1.75
+Arthur Pimenta;45678912345;15/09/2001;Masculino;70;1.82
