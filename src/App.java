@@ -3,7 +3,6 @@ import Dados.Atleta;
 import Lista.AtletaLista;
 
 import java.io.BufferedWriter;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.io.FileNotFoundException;
@@ -15,37 +14,38 @@ public class App {
     Scanner ler = new Scanner(System.in);
 
     CriaAtleta criaAtleta = new CriaAtleta();
-
     AtletaLista atletaLista = CriaAtleta.criaAtleta();
+
     int escolha = 0;
 
     System.out.println("Bem vindo ao Treino Esperto!");
-    do {
-      System.out.println("Escolha o número respectivo à funcionalidade desejada:");
-      System.out.println("1 - Login");
-      System.out.println("2 - Cadastro de novo usuário");
-      System.out.println("9 - Finalizar programa");
-      escolha = ler.nextInt();
+    System.out.println("Escolha o número respectivo à funcionalidade desejada:");
+    System.out.println("1 - Login");
+    System.out.println("2 - Cadastro de novo usuário");
+    System.out.println("9 - Finalizar programa");
 
-      switch (escolha) {
-        case 1:
-          System.out.println("Para fazer o login digite o CPF: ");
-          String cpf = ler.nextLine();
-          Atleta busca = null;
-          login(busca, atletaLista, cpf);
-          break;
+    escolha = ler.nextInt();
 
-        case 2:
-          cadastro();
-          break;
+    switch (escolha) {
+      case 1:
+        System.out.println("Para fazer o login digite o CPF: ");
+        String cpf = ler.nextLine();
+        Atleta busca = null;
+        login(busca, atletaLista, cpf);
+        break;
 
-        case 9:
-          System.out.println("Volte sempre!");
-          break;
+      case 2:
+        cadastro();
+        break;
+
+      case 9:
+        System.out.println("Volte sempre!");
+        break;
       }
-    } while (escolha != 9);
     ler.close();
   }
+
+
 
   // Validar o CPF do atleta
   public static void login(Atleta busca, AtletaLista atletaLista, String cpf) {
