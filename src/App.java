@@ -13,10 +13,9 @@ public class App {
   public static void main(String[] args) throws FileNotFoundException {
     Scanner ler = new Scanner(System.in);
 
-    CriaAtleta criaAtleta = new CriaAtleta();
     AtletaLista atletaLista = CriaAtleta.criaAtleta();
 
-    int escolha = 0;
+    int escolha;
 
     System.out.println("Bem vindo ao Treino Esperto!");
     System.out.println("Escolha o número respectivo à funcionalidade desejada:");
@@ -41,20 +40,19 @@ public class App {
       case 9:
         System.out.println("Volte sempre!");
         break;
-      }
+    }
+
     ler.close();
   }
 
 
-
-  // Validar o CPF do atleta
   public static void login(Atleta busca, AtletaLista atletaLista, String cpf) {
     Scanner ler = new Scanner(System.in);
     String buscaCpf = cpf;
 
-    while (busca == null) { // Enquanto busca = null
+    while (busca == null) {
 
-      busca = atletaLista.localizarAtleta(buscaCpf); // método localizado em AtletaLista
+      busca = atletaLista.localizarAtleta(buscaCpf);
 
       if (busca != null) {
         System.out.println("\nBem vindo " + busca.nome + "!!");
@@ -71,20 +69,23 @@ public class App {
 
   public static void cadastro() {
     Scanner ler = new Scanner(System.in);
-    String[] tipos = { "nome", "cpf", "data de nascimento", "genero", "peso", "altura" };
+    String[] tipos = { "nome", "cpf", "data de nascimento", "gênero", "peso", "altura" };
     String dados = "";
 
     System.out.println("Menu de cadastro ");
     for (int i = 0; i < 6; i++) {
-      if ((i == 2) || (i == 5))
+      if ((i == 2) || (i == 5)) {
         System.out.println("Insira sua " + tipos[i] + ":");
-      else
+      } else {
         System.out.println("Insira seu " + tipos[i] + ":");
+      }
       dados = dados.concat(ler.nextLine());
-      if (i != 5)
+
+      if (i != 5) {
         dados = dados.concat(";");
-      else
+      } else {
         dados = dados.concat("\n");
+      }
     }
 
     try (FileWriter criador = new FileWriter("Atleta.txt", true);
