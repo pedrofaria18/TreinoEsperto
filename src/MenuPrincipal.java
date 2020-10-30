@@ -13,12 +13,18 @@ public class MenuPrincipal {
         System.out.println("2 - Listar série");
         int escolha = ler.nextInt();
 
-        if (escolha == 1) {
-            cadastroSerie();
-        } else if (escolha == 2) {
-            listarSeries();
-        } else {
-            System.out.println("Funcionalidade escolhida não existe");
+        switch (escolha) {
+            case 1:
+                cadastroSerie();
+                break;
+
+            case 2:
+                listarSeries();
+                break;
+
+            default:
+                System.out.println("Funcionalidade escolhida não existe");
+                break;
         }
         ler.close();
     }
