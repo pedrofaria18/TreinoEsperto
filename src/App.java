@@ -89,7 +89,7 @@ public class App {
 
     try (FileWriter criador = new FileWriter("Atleta.txt", true);
         BufferedWriter buffer = new BufferedWriter(criador);
-        PrintWriter escritor = new PrintWriter(buffer);) {
+        PrintWriter escritor = new PrintWriter(buffer)) {
       escritor.append(dados);
       System.out.println("Cadastro concluído com sucesso!");
     } catch (Exception e) {
