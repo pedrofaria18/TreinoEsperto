@@ -13,29 +13,17 @@ public class App {
   public static void main(String[] args) throws FileNotFoundException {
     Scanner ler = new Scanner(System.in);
 
-    AtletaLista atletaLista = CriaAtleta.criaAtleta();
-
-    int escolha;
-
     System.out.println("Bem vindo ao Treino Esperto!");
     System.out.println("Escolha o número respectivo à funcionalidade desejada:");
     System.out.println("1 - Login");
     System.out.println("2 - Cadastro de novo usuário");
     System.out.println("9 - Finalizar programa");
 
-    escolha = ler.nextInt();
+    int escolha = ler.nextInt();
 
     switch (escolha) {
       case 1:
-        String cpf = "";
-
-        System.out.println("Para fazer o login digite o CPF: ");
-        while (cpf.equals("")) {
-          cpf = ler.nextLine();
-        } ;
-
-        Atleta busca = null;
-        login(busca, atletaLista, cpf);
+        login();
         break;
 
       case 2:
@@ -51,8 +39,14 @@ public class App {
   }
 
 
-  public static void login(Atleta busca, AtletaLista atletaLista, String cpf) {
+  public static void login() throws FileNotFoundException {
     Scanner ler = new Scanner(System.in);
+
+    System.out.println("Para fazer o login digite o CPF: ");
+    String cpf = ler.nextLine();
+
+    AtletaLista atletaLista = CriaAtleta.criaAtleta();
+    Atleta busca = null;
     String buscaCpf = cpf;
 
     while (busca == null) {
