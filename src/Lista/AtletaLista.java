@@ -31,7 +31,7 @@ public class AtletaLista {
   
   // localizar um atleta pelo CPF
   public Atleta localizarAtleta(String cpf) {
-    AtletaElement aux = primeiro.proximo; //posiciona após o sentinela
+    AtletaElement aux = primeiro.proximo;
 
     while (aux != null) {
       if(aux.equals(cpf)) {

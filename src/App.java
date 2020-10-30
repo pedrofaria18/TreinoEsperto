@@ -27,8 +27,13 @@ public class App {
 
     switch (escolha) {
       case 1:
+        String cpf = "";
+
         System.out.println("Para fazer o login digite o CPF: ");
-        String cpf = ler.nextLine();
+        while (cpf.equals("")) {
+          cpf = ler.nextLine();
+        } ;
+
         Atleta busca = null;
         login(busca, atletaLista, cpf);
         break;
