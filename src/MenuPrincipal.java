@@ -30,7 +30,34 @@ public class MenuPrincipal {
     }
 
     public void cadastroSerie() {
-        System.out.println("Cadastro");
+        Scanner ler = new Scanner(System.in);
+        String[] tipos = { "cpf", "data atual", "duração", "nivel do treino" };
+        String dados = "";
+
+        System.out.println("Menu de cadastro ");
+        for (int i = 0; i < 4; i++) {
+            if ((i == 0) || (i == 3)) {
+                System.out.println("Insira o " + tipos[i] + ":");
+            } else {
+                System.out.println("Insira a " + tipos[i] + ":");
+            }
+            dados = dados.concat(ler.nextLine());
+
+            if (i != 3) {
+                dados = dados.concat(";");
+            } else {
+                dados = dados.concat("\n");
+            }
+        }
+
+        try (FileWriter criador = new FileWriter("Series.txt", true);
+             BufferedWriter buffer = new BufferedWriter(criador);
+             PrintWriter escritor = new PrintWriter(buffer)) {
+            escritor.append(dados);
+            System.out.println("Cadastro de série concluído com sucesso!");
+        } catch (Exception e) {
+            System.out.println("Erro ao cadastrar a Série");
+        }
     }
 
     public void listarSeries() {
