@@ -56,7 +56,7 @@ public class App {
       if (busca != null) {
         System.out.println("\nBem vindo " + busca.nome + "!!");
         MenuPrincipal menuPrincipal = new MenuPrincipal();
-        menuPrincipal.menuPrincipal();
+        menuPrincipal.menuPrincipal(cpf);
       } else {
         System.out.println("Atleta não encontrado, por favor digite seu cpf novamente: ");
         buscaCpf = ler.nextLine();

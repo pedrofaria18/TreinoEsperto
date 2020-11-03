@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class MenuPrincipal {
 
-    public void menuPrincipal() {
+    public void menuPrincipal(String cpf) {
         Scanner ler = new Scanner(System.in);
 
         System.out.println("Escolha o número respectivo à funcionalidade desejada:");
@@ -15,7 +15,7 @@ public class MenuPrincipal {
 
         switch (escolha) {
             case 1:
-                cadastroSerie();
+                cadastroSerie(cpf);
                 break;
 
             case 2:
@@ -29,9 +29,9 @@ public class MenuPrincipal {
         ler.close();
     }
 
-    public void cadastroSerie() {
+    public void cadastroSerie(String cpf) {
         Scanner ler = new Scanner(System.in);
-        String[] tipos = { "cpf", "data atual", "duração", "nivel do treino" };
+        Object[] tipos = { "cpf", "data atual", "duração", "nivel do treino" };
         String dados = "";
 
         System.out.println("Menu de cadastro ");
