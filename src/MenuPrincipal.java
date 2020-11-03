@@ -33,7 +33,7 @@ public class MenuPrincipal {
 
     public void cadastroSerie(String cpf) {
         Scanner ler = new Scanner(System.in);
-        Object[] tipos = {"duração", "nivel do treino" };
+        String[] tipos = {"duração", "nivel do treino" };
         String dados = "";
 
         Date data = new Date();
