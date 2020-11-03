@@ -1,6 +1,8 @@
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 public class MenuPrincipal {
@@ -31,19 +33,23 @@ public class MenuPrincipal {
 
     public void cadastroSerie(String cpf) {
         Scanner ler = new Scanner(System.in);
-        Object[] tipos = { "cpf", "data atual", "duração", "nivel do treino" };
+        Object[] tipos = {"duração", "nivel do treino" };
         String dados = "";
 
+        Date data = new Date();
+        SimpleDateFormat formatar = new SimpleDateFormat("d/M/y");
+        String dataFormatada = formatar.format(data);
+
         System.out.println("Menu de cadastro ");
-        for (int i = 0; i < 4; i++) {
-            if ((i == 0) || (i == 3)) {
+        for (int i = 0; i < 2; i++) {
+            if ((i == 1)) {
                 System.out.println("Insira o " + tipos[i] + ":");
             } else {
                 System.out.println("Insira a " + tipos[i] + ":");
             }
             dados = dados.concat(ler.nextLine());
 
-            if (i != 3) {
+            if (i != 1) {
                 dados = dados.concat(";");
             } else {
                 dados = dados.concat("\n");
@@ -53,7 +59,7 @@ public class MenuPrincipal {
         try (FileWriter criador = new FileWriter("Series.txt", true);
              BufferedWriter buffer = new BufferedWriter(criador);
              PrintWriter escritor = new PrintWriter(buffer)) {
-            escritor.append(dados);
+            escritor.append(cpf).append(";").append(dataFormatada).append(";").append(dados);
             System.out.println("Cadastro de série concluído com sucesso!");
         } catch (Exception e) {
             System.out.println("Erro ao cadastrar a Série");
