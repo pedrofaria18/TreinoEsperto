@@ -23,11 +23,11 @@ public class App {
 
     switch (escolha) {
       case 1:
-        login();
+        loginAtleta();
         break;
 
       case 2:
-        cadastro();
+        cadastroAtleta();
         break;
 
       case 9:
@@ -38,8 +38,7 @@ public class App {
     ler.close();
   }
 
-
-  public static void login() throws FileNotFoundException {
+  public static void loginAtleta() throws FileNotFoundException {
     Scanner ler = new Scanner(System.in);
 
     System.out.println("Para fazer o login digite o CPF: ");
@@ -66,7 +65,7 @@ public class App {
     ler.close();
   }
 
-  public static void cadastro() {
+  public static void cadastroAtleta() {
     Scanner ler = new Scanner(System.in);
     String[] tipos = { "nome", "cpf", "data de nascimento", "gênero", "peso", "altura" };
     String dados = "";
