@@ -7,13 +7,11 @@ public class AtletaLista {
   public AtletaElement primeiro;
   public AtletaElement ultimo;
 
-
   // Cria uma lista vazia com elemento sentinela
   public AtletaLista() {
     primeiro = new AtletaElement(null);
     ultimo = primeiro;
   }
-
 
   // Insere um atleta no fim da lista
   public void inserir(Atleta atleta) {
@@ -21,13 +19,6 @@ public class AtletaLista {
     ultimo.proximo = novo;
     ultimo = novo;
   }
-
-
-  // Verifica se a fila está vazia
-  public boolean listaVazia(){
-    return (ultimo==primeiro);
-  }
-
   
   // localizar um atleta pelo CPF
   public Atleta localizarAtleta(String cpf) {

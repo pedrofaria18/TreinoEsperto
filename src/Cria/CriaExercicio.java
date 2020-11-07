@@ -1,30 +1,30 @@
 package Cria;
 
-import Dados.Series;
-import Lista.SeriesLista;
+import Dados.Exercicio;
+import Lista.ExercicioLista;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.util.Scanner;
 
-public class CriaSerie {
-    public static SeriesLista criaSerie() throws FileNotFoundException {
-        Scanner lerArquivo = new Scanner(new File("Series.txt"));
-        SeriesLista seriesLista = new SeriesLista();
+public class CriaExercicio {
+    public static ExercicioLista criaExercicio() throws FileNotFoundException {
+        Scanner lerArquivo = new Scanner(new File("Exercicio.txt"));
+        ExercicioLista exercicioLista = new ExercicioLista();
 
         while(lerArquivo.hasNextLine()) {
             String linhaAtual = lerArquivo.nextLine();
             String [] dados = linhaAtual.split(";");
-            Series series = new Series(
+            Exercicio exercicio = new Exercicio(
                     dados[0],
                     LocalDate.parse(dados[1]),
                     dados[2]
             );
-            seriesLista.inserir(series);
+            exercicioLista.inserir(exercicio);
         }
 
         lerArquivo.close();
-        return seriesLista;
+        return exercicioLista;
     }
 }
