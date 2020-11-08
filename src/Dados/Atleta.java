@@ -16,16 +16,12 @@ public class Atleta {
     this.peso = peso;
     this.altura = altura;
   }
-  
-  // Método (genérico) para retornar os dados do atleta em String
+
   @Override
   public String toString(){
-    String aux = "Cpf: "+ cpf +" - Nome: "+ nome +" - Data Nascimento: "+ dataNascimento +" - Gênero: "+ genero +" - Peso: "+ peso +" - Altura: "+ altura;
-    return aux;
+    return cpf + " - " + nome + " - " + dataNascimento + " - " + genero + " - " + peso + " - " + altura;
   }
 
-
-  // Método (genérico) para localizar um atleta pelo cpf
   @Override
   public boolean equals(Object obj){
     String aux = (String)obj;

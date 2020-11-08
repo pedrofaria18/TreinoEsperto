@@ -1,6 +1,11 @@
 import Cria.CriaAtleta;
+import Cria.CriaSerie;
+
 import Dados.Atleta;
+import Dados.Series;
+
 import Lista.AtletaLista;
+import Lista.SeriesLista;
 
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -28,8 +33,7 @@ public class App {
 
       if (busca != null) {
         System.out.println("\nBem vindo " + busca.nome + "!!");
-        MenuPrincipal menuPrincipal = new MenuPrincipal();
-        menuPrincipal.menuPrincipal(cpf);
+        menuPrincipal(cpf);
       } else {
         System.out.println("Atleta não encontrado, por favor digite seu cpf novamente: ");
         buscaCpf = ler.nextLine();
@@ -38,4 +42,36 @@ public class App {
 
     ler.close();
   }
+
+  public static void menuPrincipal(String cpf) throws FileNotFoundException {
+    Scanner ler = new Scanner(System.in);
+
+    System.out.println("Escolha o número respectivo à funcionalidade desejada:");
+    System.out.println("1 - Listar série");
+    System.out.println("2 - Cálculo");
+    int escolha = ler.nextInt();
+
+    switch (escolha) {
+      case 1:
+        listarSerie(cpf);
+        break;
+
+      case 2:
+        break;
+
+      default:
+        System.out.println("Funcionalidade escolhida não existe");
+        break;
+    }
+    ler.close();
+  }
+
+  private static void listarSerie(String cpf) throws FileNotFoundException {
+  }
 }
+
+
+
+//        Date data = new Date();
+//        SimpleDateFormat formatar = new SimpleDateFormat("d/M/y");
+//        String dataFormatada = formatar.format(data);

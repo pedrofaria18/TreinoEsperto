@@ -5,7 +5,7 @@ import Lista.SeriesLista;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.time.LocalDate;
+
 import java.util.Scanner;
 
 public class CriaSerie {
@@ -18,7 +18,7 @@ public class CriaSerie {
             String [] dados = linhaAtual.split(";");
             Series series = new Series(
                     dados[0],
-                    LocalDate.parse(dados[1]),
+                    dados[1],
                     dados[2]
             );
             seriesLista.inserir(series);
