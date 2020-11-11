@@ -21,6 +21,7 @@ public class CriaAtleta {
             atletaLista.inserir(atleta);
             atletaHash.addTabela(atleta);
         }
+
         lerArquivo.close();
         return atletaLista;
     }

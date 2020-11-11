@@ -12,6 +12,11 @@ public class Series {
     this.duracao = duracao;
   }
 
+  public int compareTo(String cpf){
+    String aux = this.cpf;
+    return aux.compareTo(String.valueOf(cpf));
+  }
+
   @Override
   public String toString(){
       return cpf + " - " + data + " - " + duracao;
