@@ -45,5 +45,4 @@ public class AtletaLista {
       percorre = percorre.proximo;
     }
   }
-
 }

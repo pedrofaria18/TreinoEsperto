@@ -2,6 +2,7 @@ package Hash;
 
 import Lista.AtletaLista;
 import Dados.Atleta;
+import Elemento.AtletaElement;
 
 public class TabelaHash {
     public static AtletaLista tabela[];
@@ -34,13 +35,29 @@ public class TabelaHash {
         return tabela[funcaoHash(cpf)];
     }
 
-    public static void alturaAtletas() {
+    public static void alturaAtletas(int max, int min) {
+        AtletaElement aux = null;
+        String altura = "";
+        String cpf = "";
+
+        int alturaInt = 0;
 
         for (int i = 0; i < TAMANHO; i++) {
-            while (tabela[i].primeiro.proximo != null) {
-                String altura = tabela[i].primeiro.proximo.atleta.altura;
-                System.out.println(altura);
+            aux = tabela[i].primeiro.proximo;
+            // System.out.println(i);
+            while (aux != null) {
+                altura = aux.atleta.altura;
+                altura = altura.replace(",", "");
+                altura = altura.replace(".", "");
+                alturaInt = Integer.parseInt(altura);
+                // System.out.println(altura + " " + i);
+                if ((alturaInt <= max) && (alturaInt >= min)) {
+                    cpf = cpf.concat(aux.atleta.nome);
+                    cpf = cpf.concat(";");
+                }
+                aux = aux.proximo;
             }
         }
+        System.out.println(cpf);
     }
 }

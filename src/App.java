@@ -22,7 +22,7 @@ public class App {
   public static void login() throws FileNotFoundException {
     Scanner ler = new Scanner(System.in);
     AtletaLista atletaLista = CriaAtleta.criaAtleta();
-    TabelaHash.alturaAtletas();
+
     System.out.println("Para fazer o login digite o CPF: ");
     String cpf = ler.nextLine();
 
@@ -52,6 +52,7 @@ public class App {
     System.out.println("Escolha o número respectivo à funcionalidade desejada:");
     System.out.println("1 - Listar série");
     System.out.println("2 - Cálculo");
+    System.out.println("3 - Atletas por altura");
     int escolha = ler.nextInt();
 
     switch (escolha) {
@@ -60,6 +61,45 @@ public class App {
         break;
 
       case 2:
+
+        break;
+
+      case 3:
+        String max;
+        String min;
+        int maximo;
+        int minimo;
+        boolean condicao = true;
+
+        do {
+          System.out.println("Insira a altura máxima");
+          max = ler.next();
+
+          System.out.println("Insira a altura mínima");
+          min = ler.next();
+
+          if (max.contains(",")) {
+            max = max.replace(",", "");
+          }
+          if (max.contains(".")) {
+            max = max.replace(".", "");
+          }
+          if (min.contains(",")) {
+            min = min.replace(",", "");
+          }
+          if (min.contains(".")) {
+            min = min.replace(".", "");
+          }
+          maximo = Integer.parseInt(max);
+          minimo = Integer.parseInt(min);
+          if (minimo > maximo) {
+            System.out.println("Faixa de altura inválida! Favor inserir novamente.");
+            condicao = false;
+          } else
+            condicao = true;
+        } while (condicao != true);
+
+        TabelaHash.alturaAtletas(maximo, minimo);
         break;
 
       default:

@@ -1,6 +1,7 @@
 package Elemento;
 
 import Dados.Atleta;
+import Lista.AtletaLista;
 
 public class AtletaElement {
   public Atleta atleta;
@@ -12,8 +13,8 @@ public class AtletaElement {
   }
 
   @Override
-  public boolean equals(Object obj){
-    String aux = (String)obj;
+  public boolean equals(Object obj) {
+    String aux = (String) obj;
     return atleta.equals(aux);
   }
 }
