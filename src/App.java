@@ -7,6 +7,7 @@ import Dados.Series;
 import Lista.AtletaLista;
 import Lista.SeriesLista;
 
+import Hash.TabelaHash;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
@@ -19,11 +20,11 @@ public class App {
 
   public static void login() throws FileNotFoundException {
     Scanner ler = new Scanner(System.in);
+    AtletaLista atletaLista = CriaAtleta.criaAtleta();
 
     System.out.println("Para fazer o login digite o CPF: ");
     String cpf = ler.nextLine();
 
-    AtletaLista atletaLista = CriaAtleta.criaAtleta();
     Atleta busca = null;
     String buscaCpf = cpf;
 
@@ -33,6 +34,8 @@ public class App {
 
       if (busca != null) {
         System.out.println("\nBem vindo " + busca.nome + "!!");
+
+        TabelaHash.Vetor[2].ImprimeLista();
         menuPrincipal(cpf);
       } else {
         System.out.println("Atleta não encontrado, por favor digite seu cpf novamente: ");
@@ -70,8 +73,6 @@ public class App {
   }
 }
 
-
-
-//        Date data = new Date();
-//        SimpleDateFormat formatar = new SimpleDateFormat("d/M/y");
-//        String dataFormatada = formatar.format(data);
+// Date data = new Date();
+// SimpleDateFormat formatar = new SimpleDateFormat("d/M/y");
+// String dataFormatada = formatar.format(data);

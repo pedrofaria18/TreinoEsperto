@@ -19,19 +19,28 @@ public class AtletaLista {
     ultimo.proximo = novo;
     ultimo = novo;
   }
-  
+
   // localizar um atleta pelo CPF
   public Atleta localizarAtleta(String cpf) {
     AtletaElement aux = primeiro.proximo;
 
     while (aux != null) {
-      if(aux.equals(cpf)) {
+      if (aux.equals(cpf)) {
         return aux.atleta;
       } else {
         aux = aux.proximo;
       }
     }
 
-    return null;    
+    return null;
+  }
+
+  public void ImprimeLista() {
+    AtletaElement percorre = primeiro.proximo;
+
+    while (percorre != null) {
+      System.out.println(percorre);
+      percorre = percorre.proximo;
+    }
   }
 }
