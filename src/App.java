@@ -25,24 +25,23 @@ public class App {
     System.out.println("Para fazer o login digite o CPF: ");
     String cpf = ler.nextLine();
 
-    Atleta busca = null;
-    String buscaCpf = cpf;
+    AtletaLista buscaLista = TabelaHash.buscaHash(cpf);
 
-    while (busca == null) {
+    Atleta buscaAtleta = null;
+    while (buscaAtleta == null) {
 
-      busca = atletaLista.localizarAtleta(buscaCpf);
+      buscaAtleta = buscaLista.localizarAtleta(cpf);
 
-      if (busca != null) {
-        System.out.println("\nBem vindo " + busca.nome + "!!");
+      if (buscaAtleta != null) {
+        System.out.println("\nBem vindo " + buscaAtleta.nome + "!!");
 
-        TabelaHash.Vetor[2].ImprimeLista();
         menuPrincipal(cpf);
       } else {
         System.out.println("Atleta não encontrado, por favor digite seu cpf novamente: ");
-        buscaCpf = ler.nextLine();
+        cpf = ler.nextLine();
+        buscaLista = TabelaHash.buscaHash(cpf);
       }
     }
-
     ler.close();
   }
 

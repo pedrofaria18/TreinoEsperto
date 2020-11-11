@@ -6,6 +6,7 @@ import Elemento.AtletaElement;
 public class AtletaLista {
   public AtletaElement primeiro;
   public AtletaElement ultimo;
+  public String nome;
 
   // Cria uma lista vazia com elemento sentinela
   public AtletaLista() {

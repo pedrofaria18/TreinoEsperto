@@ -18,17 +18,19 @@ public class TabelaHash {
         }
     }
 
-    public static int funcaoHash(Atleta atleta) {
+    public static int funcaoHash(String cpf) {
         // calcular o valor hash do cpf
-        String cpf = atleta.cpf;
         cpf = cpf.substring(0, 7);
         int cpfConvertido = Integer.parseInt(cpf);
-        int posicao = cpfConvertido / 1000;
-        return posicao %= TAMANHO;
+        int posicao = cpfConvertido % TAMANHO;
+        return posicao;
     }
 
     public void addTabela(Atleta atleta) {
-        Vetor[funcaoHash(atleta)].inserir(atleta);
-        System.out.println("Inseriu atleta " + atleta.cpf);
+        Vetor[funcaoHash(atleta.cpf)].inserir(atleta);
+    }
+
+    public static AtletaLista buscaHash(String cpf) {
+        return Vetor[funcaoHash(cpf)];
     }
 }
