@@ -4,17 +4,17 @@ import Lista.AtletaLista;
 import Dados.Atleta;
 
 public class TabelaHash {
-    public static AtletaLista Vetor[];
+    public static AtletaLista tabela[];
     private static final int TAMANHO = 10;
 
     public TabelaHash() {
-        Vetor = new AtletaLista[TAMANHO];
+        tabela = new AtletaLista[TAMANHO];
         inicializaListas();
     }
 
     public static void inicializaListas() {
         for (int i = 0; i < TAMANHO; i++) {
-            Vetor[i] = new AtletaLista();
+            tabela[i] = new AtletaLista();
         }
     }
 
@@ -27,10 +27,20 @@ public class TabelaHash {
     }
 
     public void addTabela(Atleta atleta) {
-        Vetor[funcaoHash(atleta.cpf)].inserir(atleta);
+        tabela[funcaoHash(atleta.cpf)].inserir(atleta);
     }
 
     public static AtletaLista buscaHash(String cpf) {
-        return Vetor[funcaoHash(cpf)];
+        return tabela[funcaoHash(cpf)];
+    }
+
+    public static void alturaAtletas() {
+
+        for (int i = 0; i < TAMANHO; i++) {
+            while (tabela[i].primeiro.proximo != null) {
+                String altura = tabela[i].primeiro.proximo.atleta.altura;
+                System.out.println(altura);
+            }
+        }
     }
 }

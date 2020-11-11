@@ -15,13 +15,14 @@ public class App {
 
   public static void main(String[] args) throws FileNotFoundException {
     System.out.println("Bem vindo ao Treino Esperto!");
+
     login();
   }
 
   public static void login() throws FileNotFoundException {
     Scanner ler = new Scanner(System.in);
     AtletaLista atletaLista = CriaAtleta.criaAtleta();
-
+    TabelaHash.alturaAtletas();
     System.out.println("Para fazer o login digite o CPF: ");
     String cpf = ler.nextLine();
 
@@ -70,6 +71,14 @@ public class App {
 
   private static void listarSerie(String cpf) throws FileNotFoundException {
   }
+
+  // private static void alturaAtletas() {
+
+  // for (int i = 0; i < TabelaHash.Vetor.length; i++) {
+
+  // TabelaHash.Vetor[i].ImprimeLista();
+  // }
+
 }
 
 // Date data = new Date();

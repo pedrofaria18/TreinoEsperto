@@ -4,6 +4,7 @@ import Dados.Atleta;
 import Elemento.AtletaElement;
 
 public class AtletaLista {
+  public static Object atletaLista;
   public AtletaElement primeiro;
   public AtletaElement ultimo;
   public String nome;
@@ -44,4 +45,5 @@ public class AtletaLista {
       percorre = percorre.proximo;
     }
   }
+
 }
