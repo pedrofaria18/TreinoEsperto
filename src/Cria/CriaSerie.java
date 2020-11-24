@@ -10,7 +10,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class CriaSerie {
-    public static SeriesLista criaSerie() throws FileNotFoundException {
+    public static SeriesLista criaSerie(String cpf) throws FileNotFoundException {
         Scanner lerArquivo = new Scanner(new File("Series.txt"));
         SeriesLista seriesLista = new SeriesLista();
         ABB seriesArvore = new ABB();
@@ -24,16 +24,19 @@ public class CriaSerie {
                     dados[2]
             );
             seriesArvore.inserir(series);
-            seriesLista.inserir(series);
         }
 
-        String cpf = "12345678990";
-        Series aux = seriesArvore.buscar(cpf);
-        if(aux!=null)
-            System.out.println(aux);
-        else
-            System.out.println("Aluno não existe.");
-        lerArquivo.close();
+        Series aux = null;
+
+        while(aux == null) {
+            aux = seriesArvore.buscar(cpf);
+            if (aux != null) {
+                System.out.println(aux);
+                System.out.println(seriesArvore.emOrdem());
+            } else {
+                System.out.println("Série não existe.");
+            }
+        }
 
         lerArquivo.close();
         return seriesLista;

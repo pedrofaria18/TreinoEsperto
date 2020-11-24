@@ -9,6 +9,8 @@ import Lista.AtletaLista;
 import Lista.SeriesLista;
 
 import Hash.TabelaHash;
+
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
@@ -58,7 +60,7 @@ public class App {
 
     switch (escolha) {
       case 1:
-        listarSerie(cpf);
+        CriaSerie.criaSerie(cpf);
         break;
 
       case 2:
@@ -110,15 +112,34 @@ public class App {
     ler.close();
   }
 
-  private static void listarSerie(String cpf) throws FileNotFoundException {
+  private static void listarSerie() throws FileNotFoundException {
+    Scanner lerArquivo = new Scanner(new File("Series.txt"));
+    SeriesLista seriesLista = new SeriesLista();
+    ABB seriesArvore = new ABB();
+
+    while (lerArquivo.hasNextLine()) {
+      String linhaAtual = lerArquivo.nextLine();
+      String[] dados = linhaAtual.split(";");
+      Series series = new Series(
+              dados[0],
+              dados[1],
+              dados[2]
+      );
+      seriesArvore.inserir(series);
+      seriesLista.inserir(series);
+    }
+
+    String cpf = "12345678990";
+    Series aux = seriesArvore.buscar(cpf);
+    if (aux != null) {
+      System.out.println(aux);
+    }
+    else {
+      System.out.println("Aluno não existe.");
+    }
+    lerArquivo.close();
   }
 
-  // private static void alturaAtletas() {
-
-  // for (int i = 0; i < TabelaHash.Vetor.length; i++) {
-
-  // TabelaHash.Vetor[i].ImprimeLista();
-  // }
 
 }
 
