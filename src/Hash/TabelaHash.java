@@ -6,7 +6,7 @@ import Elemento.AtletaElement;
 
 public class TabelaHash {
     public static AtletaLista tabela[];
-    private static final int TAMANHO = 10;
+    private static final int TAMANHO = 5000;
 
     public TabelaHash() {
         tabela = new AtletaLista[TAMANHO];
@@ -23,7 +23,7 @@ public class TabelaHash {
         // calcular o valor hash do cpf
         cpf = cpf.substring(0, 7);
         int cpfConvertido = Integer.parseInt(cpf);
-        int posicao = cpfConvertido % TAMANHO;
+        int posicao = cpfConvertido % 4999;
         return posicao;
     }
 

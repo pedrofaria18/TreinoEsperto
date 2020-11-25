@@ -14,25 +14,24 @@ public class CriaSerie {
         Scanner lerArquivo = new Scanner(new File("Series.txt"));
         SeriesLista seriesLista = new SeriesLista();
         ABB seriesArvore = new ABB();
+        int inseriu = 0;
 
-        while(lerArquivo.hasNextLine()) {
+        while (lerArquivo.hasNextLine()) {
             String linhaAtual = lerArquivo.nextLine();
-            String [] dados = linhaAtual.split(";");
-            Series series = new Series(
-                    dados[0],
-                    dados[1],
-                    dados[2]
-            );
+            String[] dados = linhaAtual.split(";");
+            Series series = new Series(dados[0], dados[1], dados[2]);
             seriesArvore.inserir(series);
+            seriesLista.inserir(series);
+            inseriu++;
         }
-
+        System.out.println(inseriu);
         Series aux = null;
 
-        while(aux == null) {
+        while (aux == null) {
             aux = seriesArvore.buscar(cpf);
             if (aux != null) {
                 System.out.println(aux);
-                System.out.println(seriesArvore.emOrdem());
+                System.out.println(seriesArvore.emOrdem(cpf));
             } else {
                 System.out.println("Série não existe.");
             }
