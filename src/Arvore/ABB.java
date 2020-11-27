@@ -1,5 +1,6 @@
 package Arvore;
 
+import Arvore.Heap;
 import Dados.Series;
 
 public class ABB {
@@ -52,7 +53,7 @@ public class ABB {
         if (subArvoreEsq != null) {
             // System.out.println("entrou esq -> cpf: " + subArvoreEsq.raiz.cpf);
             if (subArvoreEsq.raiz.cpf.equals(cpf)) {
-                System.out.println(subArvoreEsq.raiz.data);
+                System.out.println(subArvoreEsq.raiz.data + " " + subArvoreEsq.raiz.duracao);
                 aux.append(subArvoreEsq.emOrdem(cpf));
                 aux.append("\n");
             } else
@@ -62,7 +63,7 @@ public class ABB {
         if (subArvoreDir != null) {
             // System.out.println("entrou dir -> cpf: " + subArvoreDir.raiz.cpf);
             if (subArvoreDir.raiz.cpf.equals(cpf)) {
-                System.out.println(subArvoreDir.raiz.data);
+                System.out.println(subArvoreDir.raiz.data + " " + subArvoreDir.raiz.duracao);
                 aux.append(subArvoreDir.emOrdem(cpf));
                 aux.append("\n");
             } else

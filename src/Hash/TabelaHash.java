@@ -52,8 +52,8 @@ public class TabelaHash {
                 alturaInt = Integer.parseInt(altura);
                 // System.out.println(altura + " " + i);
                 if ((alturaInt <= max) && (alturaInt >= min)) {
-                    cpf = cpf.concat(aux.atleta.nome);
-                    cpf = cpf.concat(";");
+                    cpf = cpf.concat(aux.atleta.nome + " " + aux.atleta.altura);
+                    cpf = cpf.concat("\n");
                 }
                 aux = aux.proximo;
             }

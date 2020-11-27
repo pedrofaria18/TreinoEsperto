@@ -1,6 +1,7 @@
 package Cria;
 
 import Arvore.ABB;
+import Arvore.Heap;
 import Dados.Series;
 import Lista.SeriesLista;
 
@@ -14,6 +15,7 @@ public class CriaSerie {
         Scanner lerArquivo = new Scanner(new File("Series.txt"));
         SeriesLista seriesLista = new SeriesLista();
         ABB seriesArvore = new ABB();
+        Heap<Series> seriesHeap = new Heap<Series>();
         int inseriu = 0;
 
         while (lerArquivo.hasNextLine()) {

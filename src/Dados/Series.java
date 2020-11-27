@@ -12,19 +12,19 @@ public class Series {
     this.duracao = duracao;
   }
 
-  public int compareTo(String cpf){
+  public int compareTo(String cpf) {
     String aux = this.cpf;
     return aux.compareTo(String.valueOf(cpf));
   }
 
   @Override
-  public String toString(){
-      return cpf + " - " + data + " - " + duracao;
+  public String toString() {
+    return cpf + " - " + data + " - " + duracao;
   }
 
   @Override
-  public boolean equals(Object obj){
-      String aux = (String)obj;
-      return this.cpf.equals(aux);
+  public boolean equals(Object obj) {
+    String aux = (String) obj;
+    return this.cpf.equals(aux);
   }
 }
