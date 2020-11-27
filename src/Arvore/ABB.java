@@ -52,18 +52,17 @@ public class ABB {
         if (subArvoreEsq != null) {
             // System.out.println("entrou esq -> cpf: " + subArvoreEsq.raiz.cpf);
             if (subArvoreEsq.raiz.cpf.equals(cpf)) {
-                System.out.println(subArvoreEsq.raiz);
+                System.out.println(subArvoreEsq.raiz.data);
                 aux.append(subArvoreEsq.emOrdem(cpf));
                 aux.append("\n");
             } else
                 subArvoreEsq.emOrdem(cpf);
-
         }
 
         if (subArvoreDir != null) {
             // System.out.println("entrou dir -> cpf: " + subArvoreDir.raiz.cpf);
             if (subArvoreDir.raiz.cpf.equals(cpf)) {
-                System.out.println(subArvoreDir.raiz);
+                System.out.println(subArvoreDir.raiz.data);
                 aux.append(subArvoreDir.emOrdem(cpf));
                 aux.append("\n");
             } else
