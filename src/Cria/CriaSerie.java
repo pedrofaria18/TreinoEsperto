@@ -35,12 +35,10 @@ public class CriaSerie {
                 // System.out.println(aux);
                 System.out.println(seriesArvore.emOrdem(cpf, seriesHeap));
                 System.out.println("size " + seriesHeap.size());
-                int contador = 0;
-                while (seriesHeap.size() > 0) {
-                    System.out.println(contador);
+
+                while (seriesHeap.size() != 0) {
                     Series max = seriesHeap.delete();
-                    System.out.println(max.data);
-                    contador++;
+                    System.out.println("Extração " + max);
                 }
             } else {
                 System.out.println("Série não existe.");

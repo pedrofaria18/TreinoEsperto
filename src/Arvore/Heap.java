@@ -33,28 +33,33 @@ public class Heap {
 
     public void insere(Series item) {
         itens.add(item);
-        System.out.println("heap " + item);
+        System.out.println("Inserção " + item);
         siftUp();
     }
 
     private void siftDown() {
         int k = 0;
         int l = 2 * k + 1;
+
         while (l < itens.size()) {
             int max = l, r = l + 1;
 
             if (r < itens.size()) {
                 if (compare(itens.get(r), itens.get(l)) > 0) {
-                    Series aux = itens.get(k);
-                    itens.set(k, itens.get(max));
-                    itens.set(max, aux);
-                    k = max;
-                    l = 2 * k + 1;
+                    max++;
                 }
+            }
+            if (compare(itens.get(k), itens.get(max)) < 0) {
+                Series aux = itens.get(k);
+                itens.set(k, itens.get(max));
+                itens.set(max, aux);
+                k = max;
+                l = 2 * k + 1;
             } else {
                 break;
             }
         }
+
     }
 
     public Series delete() throws NoSuchElementException {
@@ -65,8 +70,11 @@ public class Heap {
             return itens.remove(0);
         }
         Series hold = itens.get(0);
+
         itens.set(0, itens.remove(itens.size() - 1));
+
         siftDown();
+
         return hold;
 
     }
