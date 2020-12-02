@@ -16,7 +16,6 @@ public class CriaSerie {
         SeriesLista seriesLista = new SeriesLista();
         ABB seriesArvore = new ABB();
         Heap seriesHeap = new Heap();
-        int inseriu = 0;
 
         while (lerArquivo.hasNextLine()) {
             String linhaAtual = lerArquivo.nextLine();
@@ -24,22 +23,28 @@ public class CriaSerie {
             Series series = new Series(dados[0], dados[1], dados[2]);
             seriesArvore.inserir(series);
             seriesLista.inserir(series);
-            inseriu++;
         }
-        System.out.println(inseriu);
+
         Series aux = null;
 
         while (aux == null) {
             aux = seriesArvore.buscar(cpf);
             if (aux != null) {
                 // System.out.println(aux);
-                System.out.println(seriesArvore.emOrdem(cpf, seriesHeap));
-                System.out.println("size " + seriesHeap.size());
+                seriesArvore.emOrdem(cpf, seriesHeap);
+                int size = seriesHeap.size();
 
-                while (seriesHeap.size() != 0) {
+                Series[] vetorOrdem = new Series[size];
+
+                for (int i = size - 1; i >= 0; i--) {
                     Series max = seriesHeap.delete();
-                    System.out.println("Extração " + max);
+                    vetorOrdem[i] = max;
                 }
+
+                for (int j = 0; j <= size - 1; j++) {
+                    System.out.println(j + " - " + vetorOrdem[j].data + " - " + vetorOrdem[j].duracao);
+                }
+
             } else {
                 System.out.println("Série não existe.");
             }

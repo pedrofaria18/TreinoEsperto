@@ -33,7 +33,6 @@ public class Heap {
 
     public void insere(Series item) {
         itens.add(item);
-        System.out.println("Inserção " + item);
         siftUp();
     }
 
