@@ -1,19 +1,23 @@
 
-//import Arvore.ABB;
+import Arvore.ABB;
 import Cria.CriaAtleta;
+import Cria.CriaExercicio;
 import Cria.CriaSerie;
 
 import Dados.Atleta;
 //import Dados.Series;
-
+import Dados.Series;
 import Lista.AtletaLista;
 //import Lista.SeriesLista;
 
 import Hash.HashAtleta;
+import Hash.HashExercicio;
 
 //import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+
+import Arvore.Heap;
 
 public class App {
 
@@ -25,10 +29,12 @@ public class App {
 
   public static void login() throws FileNotFoundException {
     Scanner ler = new Scanner(System.in);
-    CriaAtleta.criaAtleta();
-
+    HashAtleta atletaHash = CriaAtleta.criaAtleta();
     System.out.println("Para fazer o login digite o CPF: ");
     String cpf = ler.nextLine();
+    System.out.println("Loading..... ");
+    ABB seriesArvore = CriaSerie.criaSerie(cpf);
+    Heap seriesHeap = CriaSerie.seriesHeap(seriesArvore, cpf);
 
     AtletaLista buscaLista = HashAtleta.buscaHash(cpf);
 
@@ -40,7 +46,7 @@ public class App {
       if (buscaAtleta != null) {
         System.out.println("\nBem vindo " + buscaAtleta.nome + "!!");
 
-        menuPrincipal(cpf);
+        menuPrincipal(cpf, seriesArvore, seriesHeap);
       } else {
         System.out.println("Atleta não encontrado, por favor digite seu cpf novamente: ");
         cpf = ler.nextLine();
@@ -50,7 +56,7 @@ public class App {
     ler.close();
   }
 
-  public static void menuPrincipal(String cpf) throws FileNotFoundException {
+  public static void menuPrincipal(String cpf, ABB seriesArvore, Heap seriesHeap) throws FileNotFoundException {
     Scanner ler = new Scanner(System.in);
 
     System.out.println("Escolha o número respectivo à funcionalidade desejada:");
@@ -61,9 +67,7 @@ public class App {
 
     switch (escolha) {
       case 1:
-        System.out.println("Essa operação pode demorar um pouco, favor aguardar.");
-        System.out.println("Loading..... ");
-        CriaSerie.criaSerie(cpf);
+        CriaSerie.listaSerie(seriesHeap);
         break;
 
       case 2:

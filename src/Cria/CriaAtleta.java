@@ -9,7 +9,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class CriaAtleta {
-    public static void criaAtleta() throws FileNotFoundException {
+    public static HashAtleta criaAtleta() throws FileNotFoundException {
         Scanner lerArquivo = new Scanner(new File("Atleta.txt"));
         // AtletaLista atletaLista = new AtletaLista();
         HashAtleta atletaHash = new HashAtleta();
@@ -23,6 +23,6 @@ public class CriaAtleta {
         }
 
         lerArquivo.close();
-        return;
+        return atletaHash;
     }
 }
