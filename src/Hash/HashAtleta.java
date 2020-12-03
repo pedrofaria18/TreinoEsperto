@@ -4,11 +4,11 @@ import Lista.AtletaLista;
 import Dados.Atleta;
 import Elemento.AtletaElement;
 
-public class TabelaHash {
+public class HashAtleta {
     public static AtletaLista tabela[];
     private static final int TAMANHO = 5000;
 
-    public TabelaHash() {
+    public HashAtleta() {
         tabela = new AtletaLista[TAMANHO];
         inicializaListas();
     }

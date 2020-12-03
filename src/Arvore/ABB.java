@@ -1,7 +1,7 @@
 package Arvore;
 
-import Arvore.Heap;
-import Cria.CriaSerie;
+//import Arvore.Heap;
+//import Cria.CriaSerie;
 import Dados.Series;
 
 public class ABB {
