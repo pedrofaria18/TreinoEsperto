@@ -1,25 +1,26 @@
 package Lista;
 
+import Arvore.HeapExercicios;
 import Dados.Exercicio;
-import Elemento.ExercicioElement;
+import Elemento.HeapElement;
 
-public class ExercicioLista {
-    public ExercicioElement primeiro;
-    public ExercicioElement ultimo;
+public class HeapLista {
+    public HeapElement primeiro;
+    public HeapElement ultimo;
 
-    public ExercicioLista() {
-        primeiro = new ExercicioElement(null);
+    public HeapLista() {
+        primeiro = new HeapElement(null);
         ultimo = primeiro;
     }
 
     public void inserir(Exercicio exercicio) {
-        ExercicioElement novo = new ExercicioElement(exercicio);
+        HeapElement novo = new HeapElement(exercicio);
         ultimo.proximo = novo;
         ultimo = novo;
     }
 
     public Exercicio localizarExercicio(String cpf) {
-        ExercicioElement aux = primeiro.proximo;
+        HeapElement aux = primeiro.proximo;
 
         while (aux != null) {
             if (aux.equals(cpf)) {
@@ -33,11 +34,12 @@ public class ExercicioLista {
     }
 
     public void ImprimeLista() {
-        ExercicioElement percorre = primeiro.proximo;
+        HeapElement percorre = primeiro.proximo;
 
         while (percorre != null) {
             System.out.println(percorre.exercicio);
             percorre = percorre.proximo;
         }
     }
+
 }

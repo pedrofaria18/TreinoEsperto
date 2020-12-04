@@ -1,13 +1,12 @@
 package Elemento;
 
-//import Arvore.HeapExercicios;
 import Dados.Exercicio;
 
-public class ExercicioElement {
+public class HeapElement {
     public Exercicio exercicio;
-    public ExercicioElement proximo;
+    public HeapElement proximo;
 
-    public ExercicioElement(Exercicio exercicio) {
+    public HeapElement(Exercicio exercicio) {
         this.exercicio = exercicio;
         this.proximo = null;
     }

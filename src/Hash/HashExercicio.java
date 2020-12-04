@@ -1,23 +1,24 @@
 package Hash;
 
-import java.time.LocalDate;
-
 import Dados.Exercicio;
 import Elemento.ExercicioElement;
+import Elemento.HeapElement;
 import Lista.ExercicioLista;
+import Lista.HeapLista;
 
 public class HashExercicio {
-    public static ExercicioLista tabela[];
-    private static final int TAMANHO = 50;
+    public static HeapLista tabela[];
+    private static final int TAMANHO = 5000;
 
     public HashExercicio() {
-        tabela = new ExercicioLista[TAMANHO];
+        tabela = new HeapLista[TAMANHO];
+
         inicializaListas();
     }
 
     public static void inicializaListas() {
         for (int i = 0; i < TAMANHO; i++) {
-            tabela[i] = new ExercicioLista();
+            tabela[i] = new HeapLista();
         }
     }
 
@@ -30,25 +31,22 @@ public class HashExercicio {
     }
 
     public void addTabela(Exercicio exercicio) {
-        tabela[funcaoHash(exercicio.data)].inserir(exercicio);
+        tabela[funcaoHash(exercicio.cpf)].inserir(exercicio);
     }
 
-    public static ExercicioLista buscaHash(String data) {
-        return tabela[funcaoHash(data)];
+    public static HeapLista buscaExercicio(String cpf) {
+        return tabela[funcaoHash(cpf)];
     }
 
-    public static void Exercicios() {
-        ExercicioElement aux = null;
-        // String cpf = "";
+    public static void Exercicios(String cpf) {
+        HeapElement aux = null;
 
-        for (int i = 0; i < TAMANHO; i++) {
-            aux = tabela[i].primeiro.proximo;
-            // System.out.println(i);
-            while (aux != null) {
-
-                System.out.println(aux);
-            }
+        aux = tabela[funcaoHash(cpf)].primeiro.proximo;
+        while (aux != null) {
+            aux = tabela[funcaoHash(cpf)].primeiro.proximo;
+            System.out.println(aux.exercicio.cpf + " - " + aux.exercicio.data + " - " + aux.exercicio.dificuldade);
             aux = aux.proximo;
         }
+
     }
 }

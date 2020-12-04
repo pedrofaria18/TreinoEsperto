@@ -31,7 +31,7 @@ public class HashAtleta {
         tabela[funcaoHash(atleta.cpf)].inserir(atleta);
     }
 
-    public static AtletaLista buscaHash(String cpf) {
+    public static AtletaLista buscaAtleta(String cpf) {
         return tabela[funcaoHash(cpf)];
     }
 
@@ -39,7 +39,7 @@ public class HashAtleta {
         AtletaElement aux = null;
         String altura = "";
         String cpf = "";
-
+        int quantidade = 0;
         int alturaInt = 0;
 
         for (int i = 0; i < TAMANHO; i++) {
@@ -54,10 +54,11 @@ public class HashAtleta {
                 if ((alturaInt <= max) && (alturaInt >= min)) {
                     cpf = cpf.concat(aux.atleta.nome + " " + aux.atleta.altura);
                     cpf = cpf.concat("\n");
+                    quantidade++;
                 }
                 aux = aux.proximo;
             }
         }
-        System.out.println(cpf);
+        System.out.println(quantidade + " - " + cpf);
     }
 }

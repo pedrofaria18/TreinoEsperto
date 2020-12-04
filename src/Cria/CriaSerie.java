@@ -1,7 +1,7 @@
 package Cria;
 
 import Arvore.ABB;
-import Arvore.Heap;
+import Arvore.HeapSeries;
 import Dados.Series;
 //import Lista.SeriesLista;
 
@@ -11,7 +11,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class CriaSerie {
-    public static ABB criaSerie(String cpf) throws FileNotFoundException {
+    public static ABB criaSerie() throws FileNotFoundException {
         Scanner lerArquivo = new Scanner(new File("Series.txt"));
         // SeriesLista seriesLista = new SeriesLista();
         ABB seriesArvore = new ABB();
@@ -28,9 +28,9 @@ public class CriaSerie {
         return seriesArvore;
     }
 
-    public static Heap seriesHeap(ABB seriesArvore, String cpf) {
+    public static HeapSeries seriesHeap(ABB seriesArvore, String cpf) {
 
-        Heap seriesHeap = new Heap();
+        HeapSeries seriesHeap = new HeapSeries();
         Series aux = null;
 
         while (aux == null) {
@@ -45,7 +45,7 @@ public class CriaSerie {
         return seriesHeap;
     }
 
-    public static void listaSerie(Heap seriesHeap) {
+    public static void listaSerie(HeapSeries seriesHeap) {
         while (seriesHeap.size() != 0) {
             int size = seriesHeap.size();
 

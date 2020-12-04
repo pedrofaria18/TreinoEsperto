@@ -5,11 +5,12 @@ import Cria.CriaExercicio;
 import Cria.CriaSerie;
 
 import Dados.Atleta;
-//import Dados.Series;
 import Dados.Series;
+import Dados.Exercicio;
 import Lista.AtletaLista;
 //import Lista.SeriesLista;
-
+import Lista.ExercicioLista;
+import Lista.HeapLista;
 import Hash.HashAtleta;
 import Hash.HashExercicio;
 
@@ -17,31 +18,33 @@ import Hash.HashExercicio;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-import Arvore.Heap;
+import Arvore.HeapSeries;
 
 public class App {
 
   public static void main(String[] args) throws FileNotFoundException {
-    System.out.println("Bem vindo ao Treino Esperto!");
 
     login();
   }
 
   public static void login() throws FileNotFoundException {
     Scanner ler = new Scanner(System.in);
+    System.out.println("Loading..... ");
     HashAtleta atletaHash = CriaAtleta.criaAtleta();
+    HashExercicio exercicioHash = CriaExercicio.criaExercicio();
+    ABB seriesArvore = CriaSerie.criaSerie();
+    System.out.println("Bem vindo ao Treino Esperto!");
     System.out.println("Para fazer o login digite o CPF: ");
     String cpf = ler.nextLine();
-    System.out.println("Loading..... ");
-    ABB seriesArvore = CriaSerie.criaSerie(cpf);
-    Heap seriesHeap = CriaSerie.seriesHeap(seriesArvore, cpf);
 
-    AtletaLista buscaLista = HashAtleta.buscaHash(cpf);
+    HeapSeries seriesHeap = CriaSerie.seriesHeap(seriesArvore, cpf);
+
+    AtletaLista buscaAtletaLista = HashAtleta.buscaAtleta(cpf);
 
     Atleta buscaAtleta = null;
     while (buscaAtleta == null) {
 
-      buscaAtleta = buscaLista.localizarAtleta(cpf);
+      buscaAtleta = buscaAtletaLista.localizarAtleta(cpf);
 
       if (buscaAtleta != null) {
         System.out.println("\nBem vindo " + buscaAtleta.nome + "!!");
@@ -50,18 +53,18 @@ public class App {
       } else {
         System.out.println("Atleta não encontrado, por favor digite seu cpf novamente: ");
         cpf = ler.nextLine();
-        buscaLista = HashAtleta.buscaHash(cpf);
+        buscaAtletaLista = HashAtleta.buscaAtleta(cpf);
       }
     }
     ler.close();
   }
 
-  public static void menuPrincipal(String cpf, ABB seriesArvore, Heap seriesHeap) throws FileNotFoundException {
+  public static void menuPrincipal(String cpf, ABB seriesArvore, HeapSeries seriesHeap) throws FileNotFoundException {
     Scanner ler = new Scanner(System.in);
 
     System.out.println("Escolha o número respectivo à funcionalidade desejada:");
     System.out.println("1 - Listar série");
-    System.out.println("2 - Cálculo");
+    System.out.println("2 - Cálculo de gasto calórico");
     System.out.println("3 - Atletas por altura");
     int escolha = ler.nextInt();
 
@@ -71,6 +74,9 @@ public class App {
         break;
 
       case 2:
+        HeapLista buscaExercicioLista = HashExercicio.buscaExercicio(cpf);
+        Exercicio buscaExercicio = buscaExercicioLista.localizarExercicio(cpf);
+        System.out.println(buscaExercicio);
 
         break;
 

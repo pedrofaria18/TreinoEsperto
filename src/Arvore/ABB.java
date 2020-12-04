@@ -47,7 +47,7 @@ public class ABB {
         }
     }
 
-    public String emOrdem(String cpf, Heap seriesHeap) {
+    public String emOrdem(String cpf, HeapSeries seriesHeap) {
         StringBuilder aux = new StringBuilder();
 
         if (subArvoreEsq != null) {

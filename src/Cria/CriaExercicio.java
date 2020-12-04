@@ -18,12 +18,12 @@ public class CriaExercicio {
         while (lerArquivo.hasNextLine()) {
             String linhaAtual = lerArquivo.nextLine();
             String[] dados = linhaAtual.split(";");
-            Exercicio exercicio = new Exercicio(dados[0], (dados[1]), dados[2]);
+            Exercicio exercicio = new Exercicio(dados[0], dados[1], dados[2]);
             // exercicioLista.inserir(exercicio);
             exerciciosHash.addTabela(exercicio);
         }
 
         lerArquivo.close();
-        return;
+        return exerciciosHash;
     }
 }

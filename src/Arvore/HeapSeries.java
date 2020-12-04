@@ -6,11 +6,11 @@ import java.util.NoSuchElementException;
 
 import Dados.Series;
 
-public class Heap {
+public class HeapSeries {
 
     private ArrayList<Series> itens;
 
-    public Heap() {
+    public HeapSeries() {
         itens = new ArrayList<Series>();
     }
 
