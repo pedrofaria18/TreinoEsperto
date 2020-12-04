@@ -24,21 +24,25 @@ public class HeapLista {
 
         while (aux != null) {
             if (aux.equals(cpf)) {
+                imprimeLista(cpf);
                 return aux.exercicio;
             } else {
                 aux = aux.proximo;
             }
         }
-
         return null;
     }
 
-    public void ImprimeLista() {
+    public void imprimeLista(String cpf) {
         HeapElement percorre = primeiro.proximo;
 
         while (percorre != null) {
-            System.out.println(percorre.exercicio);
-            percorre = percorre.proximo;
+            if (percorre.equals(cpf)) {
+                System.out.println(percorre.exercicio);
+                percorre = percorre.proximo;
+            } else {
+                percorre = percorre.proximo;
+            }
         }
     }
 
