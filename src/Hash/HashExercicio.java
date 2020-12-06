@@ -1,5 +1,6 @@
 package Hash;
 
+import Arvore.HeapExercicios;
 import Dados.Exercicio;
 import Elemento.ExercicioElement;
 import Elemento.HeapElement;
@@ -48,5 +49,22 @@ public class HashExercicio {
             aux = aux.proximo;
         }
 
+    }
+
+    public static void listaExercicio(HeapExercicios seriesHeap) {
+        while (seriesHeap.size() != 0) {
+            int size = seriesHeap.size();
+
+            Exercicio[] vetorOrdem = new Exercicio[size];
+
+            for (int i = size - 1; i >= 0; i--) {
+                Exercicio max = seriesHeap.delete();
+                vetorOrdem[i] = max;
+            }
+
+            for (int j = 0; j <= size - 1; j++) {
+                System.out.println(j + " - " + vetorOrdem[j].data + " - " + vetorOrdem[j].dificuldade);
+            }
+        }
     }
 }

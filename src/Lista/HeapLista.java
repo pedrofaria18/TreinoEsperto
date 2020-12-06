@@ -35,11 +35,12 @@ public class HeapLista {
 
     public void imprimeLista(String cpf) {
         HeapElement percorre = primeiro.proximo;
-
+        int cont = 0;
         while (percorre != null) {
             if (percorre.equals(cpf)) {
-                System.out.println(percorre.exercicio);
+                System.out.println(cont + " " + percorre.exercicio);
                 percorre = percorre.proximo;
+                cont++;
             } else {
                 percorre = percorre.proximo;
             }
