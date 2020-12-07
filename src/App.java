@@ -8,13 +8,12 @@ import Dados.Atleta;
 import Dados.Series;
 import Dados.Exercicio;
 import Lista.AtletaLista;
-//import Lista.SeriesLista;
+
 import Lista.ExercicioLista;
 import Lista.HeapLista;
 import Hash.HashAtleta;
 import Hash.HashExercicio;
 
-//import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
@@ -64,9 +63,10 @@ public class App {
 
     System.out.println("Escolha o número respectivo à funcionalidade desejada:");
     System.out.println("1 - Listar série");
-    System.out.println("2 - Cálculo de gasto calórico");
-    System.out.println("3 - Atletas por altura");
-    System.out.println("4 - Area de testes");
+    System.out.println("2 - Listar Exercícios");
+    System.out.println("3 - Cálculo de gasto calórico");
+    System.out.println("4 - Atletas por altura");
+
     int escolha = ler.nextInt();
 
     switch (escolha) {
@@ -76,12 +76,16 @@ public class App {
 
       case 2:
         HeapLista buscaExercicioLista = HashExercicio.buscaExercicio(cpf);
-        Exercicio buscaExercicio = buscaExercicioLista.localizarExercicio(cpf);
-        System.out.println(buscaExercicio);
-
+        Exercicio buscaExercicio = buscaExercicioLista.localizarExercicio(cpf, escolha);
+        // HeapLista.caloriasGastas(cpf);
         break;
 
       case 3:
+        buscaExercicioLista = HashExercicio.buscaExercicio(cpf);
+        buscaExercicio = buscaExercicioLista.localizarExercicio(cpf, escolha);
+        break;
+
+      case 4:
         String max;
         String min;
         int maximo;
@@ -117,61 +121,6 @@ public class App {
         } while (condicao != true);
 
         HashAtleta.alturaAtletas(maximo, minimo);
-        break;
-
-      case 4:
-        double kcal = 0;
-        int series = 3;
-        int repeticoes = 6;
-        double tempExecucao = 1.5;
-        int intervalo = 60;
-        double tempo = ((series * repeticoes * tempExecucao) + (series * intervalo)) / 60;
-
-        kcal = (tempo / 60) * 6;
-        System.out.println("Básico: " + kcal + "tempo: " + tempo);
-
-        series = 4;
-        repeticoes = 8;
-        tempExecucao = 2;
-        intervalo = 60;
-        tempo = ((series * repeticoes * tempExecucao) + (series * intervalo)) / 60;
-        kcal = (tempo / 60) * 6;
-        System.out.println("Intermediário: " + kcal + "tempo: " + tempo);
-
-        series = 5;
-        repeticoes = 10;
-        tempExecucao = 2;
-        intervalo = 45;
-        tempo = ((series * repeticoes * tempExecucao) + (series * intervalo)) / 60;
-        kcal = (tempo / 60) * 6;
-        System.out.println("Avançado: " + kcal + "tempo: " + tempo);
-
-        series = 5;
-        repeticoes = 13;
-        tempExecucao = 3;
-        intervalo = 30;
-        tempo = ((series * repeticoes * tempExecucao) + (series * intervalo)) / 60;
-        kcal = (tempo / 60) * 6;
-        System.out.println("Atleta: " + kcal + "tempo: " + tempo);
-
-        series = 6;
-        repeticoes = 15;
-        tempExecucao = 5;
-        intervalo = 15;
-        tempo = ((series * repeticoes * tempExecucao) + (series * intervalo)) / 60;
-        kcal = (tempo / 60) * 6;
-        System.out.println("Profissional: " + kcal + "tempo: " + tempo);
-
-        int num1 = 0;
-        int num2 = 0;
-        int num3 = 3;
-        int num4 = 5;
-        int num5 = 2;
-
-        double mult = num1 * 3.45 + num2 * 5.06 + num3 + 5.416 + num4 * 5.75 + num5 * 9;
-
-        System.out.println("Testando tempo total: " + mult);
-
         break;
 
       default:
