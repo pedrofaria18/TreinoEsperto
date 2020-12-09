@@ -1,26 +1,24 @@
 package Arvore;
 
 import java.util.ArrayList;
-//import java.util.List;
 import java.util.NoSuchElementException;
 
-import Dados.Series;
+import Dados.Exercicio;
 
-public class HeapSeries {
+public class HeapMinExercicios {
+    private ArrayList<Exercicio> itens;
 
-    private ArrayList<Series> itens;
-
-    public HeapSeries() {
-        itens = new ArrayList<Series>();
+    public HeapMinExercicios() {
+        itens = new ArrayList<Exercicio>();
     }
 
     private void siftUp() {
         int k = itens.size() - 1;
         while (k > 0) {
             int p = (k - 1) / 2;
-            Series item = itens.get(k);
-            Series pai = itens.get(p);
-            if (compare(item, pai) > 0) {
+            Exercicio item = itens.get(k);
+            Exercicio pai = itens.get(p);
+            if (compare(item, pai) < 0) {
                 itens.set(k, pai);
                 itens.set(p, item);
 
@@ -31,7 +29,7 @@ public class HeapSeries {
         }
     }
 
-    public void insere(Series item) {
+    public void insere(Exercicio item) {
         itens.add(item);
         siftUp();
     }
@@ -44,12 +42,12 @@ public class HeapSeries {
             int max = l, r = l + 1;
 
             if (r < itens.size()) {
-                if (compare(itens.get(r), itens.get(l)) > 0) {
+                if (compare(itens.get(r), itens.get(l)) < 0) {
                     max++;
                 }
             }
-            if (compare(itens.get(k), itens.get(max)) < 0) {
-                Series aux = itens.get(k);
+            if (compare(itens.get(k), itens.get(max)) > 0) {
+                Exercicio aux = itens.get(k);
                 itens.set(k, itens.get(max));
                 itens.set(max, aux);
                 k = max;
@@ -61,24 +59,23 @@ public class HeapSeries {
 
     }
 
-    public Series delete() throws NoSuchElementException {
+    public Exercicio retono() throws NoSuchElementException {
         if (itens.size() == 0) {
             throw new NoSuchElementException();
         }
         if (itens.size() == 1) {
             return itens.remove(0);
         }
-        Series hold = itens.get(0);
+        Exercicio hold = itens.get(0);
 
         itens.set(0, itens.remove(itens.size() - 1));
 
         siftDown();
 
         return hold;
-
     }
 
-    private int compare(Series item, Series item2) {
+    private int compare(Exercicio item, Exercicio item2) {
         String aux = item.data.substring(6);
         aux = aux.concat(item.data.substring(3, 5));
         aux = aux.concat(item.data.substring(0, 2));
@@ -96,4 +93,9 @@ public class HeapSeries {
     public int size() {
         return itens.size();
     }
+
+    public Exercicio get(int i) {
+        return itens.get(i);
+    }
+
 }

@@ -1,15 +1,14 @@
 
 import Arvore.ABB;
+import Arvore.HeapMinExercicios;
 import Cria.CriaAtleta;
 import Cria.CriaExercicio;
 import Cria.CriaSerie;
 
 import Dados.Atleta;
-import Dados.Series;
 import Dados.Exercicio;
 import Lista.AtletaLista;
 
-import Lista.ExercicioLista;
 import Lista.HeapLista;
 import Hash.HashAtleta;
 import Hash.HashExercicio;
@@ -17,7 +16,7 @@ import Hash.HashExercicio;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-import Arvore.HeapSeries;
+import Arvore.HeapMinSeries;
 
 public class App {
 
@@ -36,7 +35,7 @@ public class App {
     System.out.println("Para fazer o login digite o CPF: ");
     String cpf = ler.nextLine();
 
-    HeapSeries seriesHeap = CriaSerie.seriesHeap(seriesArvore, cpf);
+    HeapMinSeries seriesHeap = CriaSerie.seriesHeap(seriesArvore, cpf);
 
     AtletaLista buscaAtletaLista = HashAtleta.buscaAtleta(cpf);
 
@@ -58,7 +57,8 @@ public class App {
     ler.close();
   }
 
-  public static void menuPrincipal(String cpf, ABB seriesArvore, HeapSeries seriesHeap) throws FileNotFoundException {
+  public static void menuPrincipal(String cpf, ABB seriesArvore, HeapMinSeries seriesHeap)
+      throws FileNotFoundException {
     Scanner ler = new Scanner(System.in);
 
     System.out.println("Escolha o número respectivo à funcionalidade desejada:");
@@ -75,14 +75,13 @@ public class App {
         break;
 
       case 2:
-        HeapLista buscaExercicioLista = HashExercicio.buscaExercicio(cpf);
-        Exercicio buscaExercicio = buscaExercicioLista.localizarExercicio(cpf, escolha);
-        // HeapLista.caloriasGastas(cpf);
-        break;
+        HeapMinExercicios buscaExercicioHeap = HashExercicio.buscaHeapExercicio(cpf);
+        HashExercicio.listaExercicio(buscaExercicioHeap);
 
+        break;
       case 3:
-        buscaExercicioLista = HashExercicio.buscaExercicio(cpf);
-        buscaExercicio = buscaExercicioLista.localizarExercicio(cpf, escolha);
+        buscaExercicioHeap = HashExercicio.buscaHeapExercicio(cpf);
+        HashExercicio.caloriasGastas(buscaExercicioHeap);
         break;
 
       case 4:

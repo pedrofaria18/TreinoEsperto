@@ -1,7 +1,7 @@
 package Cria;
 
 import Arvore.ABB;
-import Arvore.HeapSeries;
+import Arvore.HeapMinSeries;
 import Dados.Series;
 
 import java.io.File;
@@ -27,9 +27,8 @@ public class CriaSerie {
         return seriesArvore;
     }
 
-    public static HeapSeries seriesHeap(ABB seriesArvore, String cpf) {
-
-        HeapSeries seriesHeap = new HeapSeries();
+    public static HeapMinSeries seriesHeap(ABB seriesArvore, String cpf) {
+        HeapMinSeries seriesHeap = new HeapMinSeries();
         Series aux = null;
 
         while (aux == null) {
@@ -44,19 +43,14 @@ public class CriaSerie {
         return seriesHeap;
     }
 
-    public static void listaSerie(HeapSeries seriesHeap) {
+    public static void listaSerie(HeapMinSeries seriesHeap) {
         while (seriesHeap.size() != 0) {
             int size = seriesHeap.size();
 
-            Series[] vetorOrdem = new Series[size];
-
             for (int i = size - 1; i >= 0; i--) {
-                Series max = seriesHeap.delete();
-                vetorOrdem[i] = max;
-            }
+                Series aux = seriesHeap.retorno();
 
-            for (int j = 0; j <= size - 1; j++) {
-                System.out.println(j + " - " + vetorOrdem[j].data + " - " + vetorOrdem[j].duracao);
+                System.out.println(aux.data + " - " + aux.duracao);
             }
         }
     }

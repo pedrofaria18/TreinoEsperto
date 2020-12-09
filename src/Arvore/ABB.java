@@ -1,7 +1,5 @@
 package Arvore;
 
-//import Arvore.Heap;
-//import Cria.CriaSerie;
 import Dados.Series;
 
 public class ABB {
@@ -47,13 +45,11 @@ public class ABB {
         }
     }
 
-    public String emOrdem(String cpf, HeapSeries seriesHeap) {
+    public String emOrdem(String cpf, HeapMinSeries seriesHeap) {
         StringBuilder aux = new StringBuilder();
 
         if (subArvoreEsq != null) {
-            // System.out.println("entrou esq -> cpf: " + subArvoreEsq.raiz.cpf);
             if (subArvoreEsq.raiz.cpf.equals(cpf)) {
-                // System.out.println(subArvoreEsq.raiz.data + " " + subArvoreEsq.raiz.duracao);
                 seriesHeap.insere(subArvoreEsq.raiz);
                 aux.append(subArvoreEsq.emOrdem(cpf, seriesHeap));
                 aux.append("\n");
@@ -62,9 +58,8 @@ public class ABB {
         }
 
         if (subArvoreDir != null) {
-            // System.out.println("entrou dir -> cpf: " + subArvoreDir.raiz.cpf);
             if (subArvoreDir.raiz.cpf.equals(cpf)) {
-                // System.out.println(subArvoreDir.raiz.data + " " + subArvoreDir.raiz.duracao);
+
                 seriesHeap.insere(subArvoreDir.raiz);
                 aux.append(subArvoreDir.emOrdem(cpf, seriesHeap));
                 aux.append("\n");
@@ -75,7 +70,4 @@ public class ABB {
         return aux.toString();
     }
 
-    // public String toString(String cpf) {
-    // return this.emOrdem(cpf);
-    // }
 }

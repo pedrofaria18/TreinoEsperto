@@ -1,6 +1,7 @@
 package Lista;
 
-import Dados.Exercicio;
+import Arvore.HeapMinExercicios;
+//import Dados.Exercicio;
 import Elemento.ExercicioElement;
 
 public class ExercicioLista {
@@ -12,13 +13,13 @@ public class ExercicioLista {
         ultimo = primeiro;
     }
 
-    public void inserir(Exercicio exercicio) {
+    public void inserir(HeapMinExercicios exercicio) {
         ExercicioElement novo = new ExercicioElement(exercicio);
         ultimo.proximo = novo;
         ultimo = novo;
     }
 
-    public Exercicio localizarExercicio(String cpf) {
+    public HeapMinExercicios localizarExercicio(String cpf) {
         ExercicioElement aux = primeiro.proximo;
 
         while (aux != null) {
