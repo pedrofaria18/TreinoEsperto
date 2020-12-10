@@ -20,7 +20,7 @@ public class HashAtleta {
     }
 
     public static int funcaoHash(String cpf) {
-        cpf = cpf.substring(0, 7);
+        cpf = cpf.substring(0, 7); // Seleciona somente os 8 primeiros dígitos
         int cpfConvertido = Integer.parseInt(cpf);
         int posicao = cpfConvertido % 4999;
         return posicao;
@@ -34,6 +34,12 @@ public class HashAtleta {
         return tabela[funcaoHash(cpf)];
     }
 
+    /**
+     * Busca os atletas dentro da faixa de altura especificada
+     * 
+     * @param max
+     * @param min
+     */
     public static void alturaAtletas(int max, int min) {
         AtletaElement aux = null;
         String altura = "";
@@ -41,15 +47,14 @@ public class HashAtleta {
         int quantidade = 0;
         int alturaInt = 0;
 
-        for (int i = 0; i < TAMANHO; i++) {
+        for (int i = 0; i < TAMANHO; i++) { // Loop para percorrer toda a Hash
             aux = tabela[i].primeiro.proximo;
-            // System.out.println(i);
             while (aux != null) {
                 altura = aux.atleta.altura;
                 altura = altura.replace(",", "");
                 altura = altura.replace(".", "");
                 alturaInt = Integer.parseInt(altura);
-                if ((alturaInt <= max) && (alturaInt >= min)) {
+                if ((alturaInt <= max) && (alturaInt >= min)) { // Testa se o atleta está dentro do padrão
                     cpf = cpf.concat(aux.atleta.nome + " - " + aux.atleta.altura);
                     cpf = cpf.concat("\n");
                     quantidade++;

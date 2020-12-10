@@ -72,7 +72,7 @@ public class App {
 
       switch (escolha) {
         case 1:
-          CriaSerie.listaSerie(seriesHeap);
+          CriaSerie.listaSerie(seriesHeap); // Método para listar as séries
           break;
 
         case 2:

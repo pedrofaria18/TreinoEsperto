@@ -31,7 +31,7 @@ public class HashExercicio {
      */
     public static int funcaoHash(String cpf) {
 
-        cpf = cpf.substring(0, 7);
+        cpf = cpf.substring(0, 7); // Seleciona somente os 8 primeiros dígitos
         int cpfConvertido = Integer.parseInt(cpf);
         int posicao = cpfConvertido % 9973;
         return posicao;
@@ -42,6 +42,12 @@ public class HashExercicio {
         tabela[index].inserir(exercicio);
     }
 
+    /**
+     * Busca a Heap dentro da Hash e dentro da Lista
+     * 
+     * @param cpf
+     * @return
+     */
     public static HeapMinExercicios buscaHeapExercicio(String cpf) {
         HeapElement aux = tabela[funcaoHash(cpf)].primeiro.proximo;
 

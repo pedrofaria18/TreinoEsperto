@@ -36,13 +36,4 @@ public class AtletaLista {
 
     return null;
   }
-
-  public void ImprimeLista() {
-    AtletaElement percorre = primeiro.proximo;
-
-    while (percorre != null) {
-      System.out.println(percorre);
-      percorre = percorre.proximo;
-    }
-  }
 }
