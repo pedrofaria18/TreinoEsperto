@@ -20,7 +20,6 @@ public class HashAtleta {
     }
 
     public static int funcaoHash(String cpf) {
-        // calcular o valor hash do cpf
         cpf = cpf.substring(0, 7);
         int cpfConvertido = Integer.parseInt(cpf);
         int posicao = cpfConvertido % 4999;
@@ -50,9 +49,8 @@ public class HashAtleta {
                 altura = altura.replace(",", "");
                 altura = altura.replace(".", "");
                 alturaInt = Integer.parseInt(altura);
-                // System.out.println(altura + " " + i);
                 if ((alturaInt <= max) && (alturaInt >= min)) {
-                    cpf = cpf.concat(aux.atleta.nome + " " + aux.atleta.altura);
+                    cpf = cpf.concat(aux.atleta.nome + " - " + aux.atleta.altura);
                     cpf = cpf.concat("\n");
                     quantidade++;
                 }

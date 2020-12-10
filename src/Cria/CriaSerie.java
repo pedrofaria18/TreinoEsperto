@@ -9,6 +9,9 @@ import java.io.FileNotFoundException;
 
 import java.util.Scanner;
 
+/**
+ * 
+ */
 public class CriaSerie {
     public static ABB criaSerie() throws FileNotFoundException {
         Scanner lerArquivo = new Scanner(new File("Series.txt"));
@@ -27,6 +30,13 @@ public class CriaSerie {
         return seriesArvore;
     }
 
+    /**
+     * Criação das Heaps dentro da ABB
+     * 
+     * @param seriesArvore
+     * @param cpf
+     * @return
+     */
     public static HeapMinSeries seriesHeap(ABB seriesArvore, String cpf) {
         HeapMinSeries seriesHeap = new HeapMinSeries();
         Series aux = null;
@@ -35,7 +45,6 @@ public class CriaSerie {
             aux = seriesArvore.buscar(cpf);
             if (aux != null)
                 seriesArvore.emOrdem(cpf, seriesHeap);
-
             else
                 System.out.println("Série não existe.");
 
@@ -43,14 +52,20 @@ public class CriaSerie {
         return seriesHeap;
     }
 
+    /**
+     * Lista as series do individuo em ordem crescente de data
+     * 
+     * @param seriesHeap
+     */
     public static void listaSerie(HeapMinSeries seriesHeap) {
+        int cont = 0;
         while (seriesHeap.size() != 0) {
             int size = seriesHeap.size();
 
             for (int i = size - 1; i >= 0; i--) {
                 Series aux = seriesHeap.retorno();
-
-                System.out.println(aux.data + " - " + aux.duracao);
+                System.out.println(cont + " - Data: " + aux.data + " - Duração da série: " + aux.duracao);
+                cont++;
             }
         }
     }

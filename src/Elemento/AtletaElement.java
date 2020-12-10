@@ -1,7 +1,6 @@
 package Elemento;
 
 import Dados.Atleta;
-//import Lista.AtletaLista;
 
 public class AtletaElement {
   public Atleta atleta;

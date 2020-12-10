@@ -1,7 +1,6 @@
 package Lista;
 
 import Hash.HashExercicio;
-import Arvore.HeapMinExercicios;
 import Dados.Exercicio;
 import Elemento.HeapElement;
 

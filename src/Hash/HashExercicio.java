@@ -1,18 +1,22 @@
 package Hash;
 
 import Arvore.HeapMinExercicios;
+import Dados.Atleta;
 import Dados.Exercicio;
 
 import Elemento.HeapElement;
-
+import Lista.AtletaLista;
 import Lista.HeapLista;
 
+/**
+ * Tabela Hash de exercícios
+ */
 public class HashExercicio {
-    public static HeapLista tabela[];
+    public static HeapLista tabela[]; // Criação de tabela do tipo Listas de Heap
     private static final int TAMANHO = 10000;
 
     public HashExercicio() {
-        tabela = new HeapLista[TAMANHO];
+        tabela = new HeapLista[TAMANHO];// Criação de listas
         inicializaListas();
     }
 
@@ -49,17 +53,19 @@ public class HashExercicio {
     }
 
     public static void listaExercicio(HeapMinExercicios exercicioHeap) {
+        int cont = 0;
         while (exercicioHeap.size() != 0) {
             int size = exercicioHeap.size();
 
             for (int i = size - 1; i >= 0; i--) {
                 Exercicio aux = exercicioHeap.retono();
-                System.out.println(aux.data + " - " + aux.dificuldade);
+                System.out.println(cont + " - Data: " + aux.data + " - Nível de dificuldade: " + aux.dificuldade);
+                cont++;
             }
         }
     }
 
-    public static void caloriasGastas(HeapMinExercicios exercicioHeap) {
+    public static void caloriasGastas(HeapMinExercicios exercicioHeap, HashAtleta atletaHash) {
 
         double kcal = 0;
         int series = 0;
@@ -67,12 +73,41 @@ public class HashExercicio {
         double tempExecucao = 0;
         int intervalo = 0;
         double tempo = 0;
+        int alturaInt = 0;
+        double pesoDouble = 0;
+        int idade = 0;
+        String genero = "";
+        String altura = "";
+        String peso = "";
+        double tmb = 0;
+        Exercicio aux = exercicioHeap.get(0);
+        AtletaLista lista = HashAtleta.buscaAtleta(aux.cpf);
+        Atleta atleta = lista.primeiro.proximo.atleta;
+        altura = atleta.altura;
+        altura = altura.replace(",", "");
+        altura = altura.replace(".", "");
+        alturaInt = Integer.parseInt(altura);
+        peso = atleta.peso;
+        peso = peso.replace(",", ".");
+        pesoDouble = Double.parseDouble(peso);
+        String data = atleta.dataNascimento;
+        String auxData = data.substring(6);
+        int dataInt = Integer.parseInt(auxData);
+        int dataAtual = 2020;
+
+        idade = dataAtual - dataInt;
+        genero = atleta.genero;
+
+        if (genero.equals("M"))
+            tmb = 66.5 + (5 * alturaInt) + (13.8 * pesoDouble) - (6.8 * idade);
+        else if (genero.equals("F"))
+            tmb = 655.1 + (1.8 * alturaInt) + (9.5 * pesoDouble) - (4.7 * idade);
 
         while (exercicioHeap.size() != 0) {
             int size = exercicioHeap.size();
 
             for (int i = size - 1; i >= 0; i--) {
-                Exercicio aux = exercicioHeap.retono();
+                aux = exercicioHeap.retono();
 
                 switch (aux.dificuldade) {
                     case "1":
@@ -108,10 +143,11 @@ public class HashExercicio {
                 }
                 tempo = ((series * repeticoes * tempExecucao) + (series * intervalo)) / 60;
                 kcal = kcal + (tempo * 6);
-
             }
-            System.out.println("Você já gastou " + kcal + "kcal no total");
+            System.out.println("Sua taxa metabólica basal é: " + tmb + "kcal diárias");
+            System.out.println("Você já gastou " + kcal + "kcal no total com nossos exercícios xD");
         }
 
     }
+
 }

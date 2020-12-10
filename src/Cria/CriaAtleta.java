@@ -1,13 +1,15 @@
 package Cria;
 
 import Dados.Atleta;
-//import Lista.AtletaLista;
 import Hash.HashAtleta;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+/**
+ * Classe de inserção de dados nas estruturas -Retirada de dados do txt
+ */
 public class CriaAtleta {
     public static HashAtleta criaAtleta() throws FileNotFoundException {
         Scanner lerArquivo = new Scanner(new File("Atleta.txt"));

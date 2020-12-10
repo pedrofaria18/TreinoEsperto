@@ -1,8 +1,6 @@
 package Elemento;
 
 import Arvore.HeapMinExercicios;
-//import Arvore.HeapExercicios;
-//import Dados.Exercicio;
 
 public class ExercicioElement {
     public HeapMinExercicios exercicio;

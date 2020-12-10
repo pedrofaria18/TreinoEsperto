@@ -1,11 +1,14 @@
 package Arvore;
 
 import java.util.ArrayList;
-//import java.util.List;
 import java.util.NoSuchElementException;
 
 import Dados.Series;
 
+/**
+ * Estrutura HeapMin Ordena os dados de forma em que o menor fica sempre como nó
+ * principal
+ */
 public class HeapMinSeries {
 
     private ArrayList<Series> itens;
@@ -14,6 +17,9 @@ public class HeapMinSeries {
         itens = new ArrayList<Series>();
     }
 
+    /**
+     * SiftUp Estrutura tem a função de manter os dados sempre ordenados
+     */
     private void siftUp() {
         int k = itens.size() - 1;
         while (k > 0) {
@@ -36,6 +42,9 @@ public class HeapMinSeries {
         siftUp();
     }
 
+    /**
+     * siftDown Estrutura usada na retirada para manter sempre a Heap ordenada
+     */
     private void siftDown() {
         int k = 0;
         int l = 2 * k + 1;
@@ -61,6 +70,9 @@ public class HeapMinSeries {
 
     }
 
+    /**
+     * Retorna sempre o primeiro item da Heap já o excluindo da árvore
+     */
     public Series retorno() throws NoSuchElementException {
         if (itens.size() == 0) {
             throw new NoSuchElementException();
