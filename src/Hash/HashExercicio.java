@@ -26,6 +26,9 @@ public class HashExercicio {
         }
     }
 
+    /**
+     * Calculo de HASH
+     */
     public static int funcaoHash(String cpf) {
 
         cpf = cpf.substring(0, 7);
@@ -52,6 +55,11 @@ public class HashExercicio {
         return tabela[funcaoHash(cpf)].primeiro.exercicioHeap;
     }
 
+    /**
+     * Lista todos os exercicios do usuário em ordem crescente de data
+     * 
+     * @param exercicioHeap
+     */
     public static void listaExercicio(HeapMinExercicios exercicioHeap) {
         int cont = 0;
         while (exercicioHeap.size() != 0) {
@@ -65,6 +73,13 @@ public class HashExercicio {
         }
     }
 
+    /**
+     * Calculo total de calorias gastas em todos os exercicios a partir do nivel de
+     * dificuldade do exercicio
+     * 
+     * @param exercicioHeap
+     * @param atletaHash
+     */
     public static void caloriasGastas(HeapMinExercicios exercicioHeap, HashAtleta atletaHash) {
 
         double kcal = 0;
@@ -91,17 +106,19 @@ public class HashExercicio {
         peso = peso.replace(",", ".");
         pesoDouble = Double.parseDouble(peso);
         String data = atleta.dataNascimento;
-        String auxData = data.substring(6);
+        String auxData = data.substring(6);// Seleciona apenas o ano de nascimento
         int dataInt = Integer.parseInt(auxData);
         int dataAtual = 2020;
 
-        idade = dataAtual - dataInt;
+        idade = dataAtual - dataInt;// Calcula a idade do indivíduo apenas pelo ano
         genero = atleta.genero;
 
         if (genero.equals("M"))
-            tmb = 66.5 + (5 * alturaInt) + (13.8 * pesoDouble) - (6.8 * idade);
+            tmb = 66.5 + (5 * alturaInt) + (13.8 * pesoDouble) - (6.8 * idade); // Cálculo de taxa metabólica basal
+                                                                                // masculino
         else if (genero.equals("F"))
-            tmb = 655.1 + (1.8 * alturaInt) + (9.5 * pesoDouble) - (4.7 * idade);
+            tmb = 655.1 + (1.8 * alturaInt) + (9.5 * pesoDouble) - (4.7 * idade); // Cálculo de taxa metabólica basal
+                                                                                  // feminino
 
         while (exercicioHeap.size() != 0) {
             int size = exercicioHeap.size();
@@ -109,7 +126,7 @@ public class HashExercicio {
             for (int i = size - 1; i >= 0; i--) {
                 aux = exercicioHeap.retono();
 
-                switch (aux.dificuldade) {
+                switch (aux.dificuldade) { // A partir da dificuldade, define-se as variaveis
                     case "1":
                         series = 3;
                         repeticoes = 6;
